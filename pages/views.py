@@ -10,3 +10,12 @@ def home_view(request, *args, **kwargs):
 def contact_view(request, *arg, **kwargs):
     return render(request, 'contact.html', {})
 
+def about_view(request, *arg, **kwargs):
+    my_context = {
+        'my_text': 'This is for learning Django',
+        'my_number': 531684,
+        'my_list': [1, 2, 34, 567, 89]
+    }
+    return render(request, 'about.html', my_context)
+
+
