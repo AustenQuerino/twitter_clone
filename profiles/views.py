@@ -8,5 +8,5 @@ def profile_detail_view(request):
     context = {
         'object': obj 
     }
-    return render(request, "profile/detail.html", context)
+    return render(request, "profiles/profile_detail.html", context)
 
