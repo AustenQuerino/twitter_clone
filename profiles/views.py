@@ -11,20 +11,20 @@ def profile_detail_view(request):
     }
     return render(request, "profiles/profile_detail.html", context)
 
-def profile_create_view(request):
-    my_form = RawProfileForm()
-    if request.method == "POST":
-        my_form = RawProfileForm(request.POST)
-        if my_form.is_valid():
-            # now the data is good
-            print(my_form.cleaned_data)
-            Profile.objects.create(**my_form.cleaned_data)
-        else:
-            print(my_form.errors)
-    context = {
-        "form": my_form
-    }
-    return render(request, "profiles/profile_create.html", context)
+# def profile_create_view(request):
+#     my_form = RawProfileForm()
+#     if request.method == "POST":
+#         my_form = RawProfileForm(request.POST)
+#         if my_form.is_valid():
+#             # now the data is good
+#             print(my_form.cleaned_data)
+#             Profile.objects.create(**my_form.cleaned_data)
+#         else:
+#             print(my_form.errors)
+#     context = {
+#         "form": my_form
+#     }
+#     return render(request, "profiles/profile_create.html", context)
 
 # def profile_create_view(request):
 #     print(request.POST)
@@ -33,14 +33,14 @@ def profile_create_view(request):
 #     context = {}
 #     return render(request, "profiles/profile_create.html", context)
 
-# def profile_create_view(request):
-#     form = ProfileCreateForm(request.POST or None)
-#     if form.is_valid():
-#         form.save()
-#         form = ProfileCreateForm()
+def profile_create_view(request):
+    form = ProfileCreateForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        form = ProfileCreateForm()
 
-#     context = {
-#         'form': form 
-#     }
-#     return render(request, "profiles/profile_create.html", context)
+    context = {
+        'form': form 
+    }
+    return render(request, "profiles/profile_create.html", context)
     
