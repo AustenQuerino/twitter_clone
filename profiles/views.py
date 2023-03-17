@@ -4,6 +4,17 @@ from .forms import ProfileCreateForm, RawProfileForm
 from .models import Profile
 
 # Create your views here.
+
+def render_initial_data(request):
+    initial_data = {
+        'username': 'default_unknown_user'
+    }
+    form = RawProfileForm(request.POST or None, initial=initial_data)
+    context = {
+        'form': form
+    }
+    return render(request, "profiles/profile_create.html", context)
+
 def profile_detail_view(request):
     obj = Profile.objects.get(id=1)
     context = {
