@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.http import Http404
+from django.shortcuts import render, get_object_or_404
 
 from .forms import ProfileCreateForm, RawProfileForm
 from .models import Profile
@@ -9,7 +10,10 @@ def render_initial_data(request):
     initial_data = {
         'username': 'default_unknown_user'
     }
-    form = RawProfileForm(request.POST or None, initial=initial_data)
+    obj = Profile.objects.get(id=1)
+    form = ProfileCreateForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        form.save()
     context = {
         'form': form
     }
@@ -54,4 +58,16 @@ def profile_create_view(request):
         'form': form 
     }
     return render(request, "profiles/profile_create.html", context)
-    
+
+
+def dynamic_lookup_view(request, my_id):
+    # obj = Profile.objects.get(id=my_id)
+    obj = get_object_or_404(Profile, id=my_id)
+    # try:
+    #     obj = Profile.objects.get(id=my_id)
+    # except Profile.DoesNotExist:
+    #     raise Http404
+    context = {
+        "object": obj
+    }
+    return render(request, "profiles/profile_detail.html", context)
