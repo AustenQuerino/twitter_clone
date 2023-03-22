@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from .forms import ProfileCreateForm, RawProfileForm
 from .models import Profile
@@ -60,9 +60,9 @@ def profile_create_view(request):
     return render(request, "profiles/profile_create.html", context)
 
 
-def dynamic_lookup_view(request, my_id):
-    # obj = Profile.objects.get(id=my_id)
-    obj = get_object_or_404(Profile, id=my_id)
+def dynamic_lookup_view(request, id):
+    # obj = Profile.objects.get(id=id)
+    obj = get_object_or_404(Profile, id=id)
     # try:
     #     obj = Profile.objects.get(id=my_id)
     # except Profile.DoesNotExist:
@@ -71,3 +71,14 @@ def dynamic_lookup_view(request, my_id):
         "object": obj
     }
     return render(request, "profiles/profile_detail.html", context)
+
+
+def profile_delete_view(request, id):
+    obj = get_object_or_404(Profile, id=id)
+    if request.method == "POST":
+        obj.delete()
+        return redirect('../../../create/')
+    context = {
+        'object': obj
+    }
+    return render(request, "profiles/profile_delete.html", context)
