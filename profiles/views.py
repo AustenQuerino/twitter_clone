@@ -88,5 +88,5 @@ def profile_list_view(request):
     context = {
         'object_list': queryset
     }
-    return render(request, "profiles/profile_list.html", context)
+    return render(request, "profiles/profile_list_link.html", context)
 
