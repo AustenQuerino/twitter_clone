@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Profile(models.Model):
@@ -9,5 +10,5 @@ class Profile(models.Model):
     updated_at = models.DateTimeField(null=True, auto_now=True)
 
     def get_absolute_url(self):
-        return f"/profile/{self.id}"
+        return reverse("profile-detail", kwargs={"id": self.id})
 

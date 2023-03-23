@@ -19,13 +19,6 @@ def render_initial_data(request):
     }
     return render(request, "profiles/profile_create.html", context)
 
-def profile_detail_view(request):
-    obj = Profile.objects.get(id=1)
-    context = {
-        'object': obj 
-    }
-    return render(request, "profiles/profile_detail.html", context)
-
 # def profile_create_view(request):
 #     my_form = RawProfileForm()
 #     if request.method == "POST":
