@@ -82,3 +82,11 @@ def profile_delete_view(request, id):
         'object': obj
     }
     return render(request, "profiles/profile_delete.html", context)
+
+def profile_list_view(request):
+    queryset = Profile.objects.all()
+    context = {
+        'object_list': queryset
+    }
+    return render(request, "profiles/profile_list.html", context)
+

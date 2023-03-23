@@ -22,7 +22,8 @@ from profiles.views import (
     profile_create_view, 
     render_initial_data, 
     dynamic_lookup_view, 
-    profile_delete_view
+    profile_delete_view, 
+    profile_list_view
     )
 
 urlpatterns = [
@@ -31,6 +32,7 @@ urlpatterns = [
     path('profile/', profile_detail_view),
     path('profile/<int:id>/', dynamic_lookup_view, name='profile'),
     path('profile/<int:id>/delete/', profile_delete_view, name='profile-delete'),
+    path('profile/list/', profile_list_view, name='profile-list'),
     path('create/', profile_create_view),
     path('initial/', render_initial_data),
     path('admin/', admin.site.urls),

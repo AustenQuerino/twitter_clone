@@ -8,3 +8,6 @@ class Profile(models.Model):
     created_at = models.DateTimeField(null=True, auto_now_add=True)
     updated_at = models.DateTimeField(null=True, auto_now=True)
 
+    def get_absolute_url(self):
+        return f"/profile/{self.id}"
+
