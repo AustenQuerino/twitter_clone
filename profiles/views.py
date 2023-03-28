@@ -6,19 +6,6 @@ from .models import Profile
 
 # Create your views here.
 
-def render_initial_data(request):
-    initial_data = {
-        'username': 'default_unknown_user'
-    }
-    obj = Profile.objects.get(id=1)
-    form = ProfileCreateForm(request.POST or None, instance=obj)
-    if form.is_valid():
-        form.save()
-    context = {
-        'form': form
-    }
-    return render(request, "profiles/profile_create.html", context)
-
 
 def profile_create_view(request):
     form = ProfileCreateForm(request.POST or None)

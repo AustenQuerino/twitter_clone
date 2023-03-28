@@ -19,7 +19,6 @@ from django.urls import path
 from pages.views import home_view, contact_view, about_view
 from profiles.views import (
     profile_create_view, 
-    render_initial_data, 
     profile_detail_view, 
     profile_delete_view, 
     profile_list_view
@@ -32,7 +31,6 @@ urlpatterns = [
     path('profile/<int:id>/delete/', profile_delete_view, name='profile-delete'),
     path('profile/list/', profile_list_view, name='profile-list'),
     path('create/', profile_create_view, name='profile-create'),
-    path('initial/', render_initial_data, name='initial-data'),
     path('about/', about_view, name='about'),
     path('admin/', admin.site.urls),
 ]
