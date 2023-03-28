@@ -18,6 +18,16 @@ def profile_create_view(request):
     return render(request, "profiles/profile_create.html", context)
 
 
+def profile_update_view(request, id):
+    obj = get_object_or_404(Profile, id=id)
+    form = ProfileCreateForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        form.save()
+    context = {
+        "form": form
+    }
+    return render(request, "profile/profile_create.html", context)
+
 def profile_detail_view(request, id):
     obj = get_object_or_404(Profile, id=id)
     context = {
