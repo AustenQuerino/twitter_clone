@@ -18,20 +18,23 @@ from django.urls import path
 
 from pages.views import home_view, contact_view, about_view
 from profiles.views import (
+    profile_list_view,
     profile_create_view, 
+    profile_update_view,
     profile_detail_view, 
-    profile_delete_view, 
-    profile_list_view
+    profile_delete_view
     )
 
 urlpatterns = [
+    path('profiles/', profile_list_view, name='profile-list'),
+    path('profiles/create/', profile_create_view, name='profile-create'),
+    path('profiles/<int:id>/', profile_detail_view, name='profile-detail'),
+    path('profiles/<int:id>/update/', profile_update_view, name='profile-update'),
+    path('profiles/<int:id>/delete/', profile_delete_view, name='profile-delete'),
+
     path('', home_view, name='home'),
-    path('contact/', contact_view, name='contact'),
-    path('profile/<int:id>/', profile_detail_view, name='profile-detail'),
-    path('profile/<int:id>/delete/', profile_delete_view, name='profile-delete'),
-    path('profile/list/', profile_list_view, name='profile-list'),
-    path('create/', profile_create_view, name='profile-create'),
     path('about/', about_view, name='about'),
+    path('contact/', contact_view, name='contact'),
     path('admin/', admin.site.urls),
 ]
 

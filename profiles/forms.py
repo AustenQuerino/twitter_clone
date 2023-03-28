@@ -10,7 +10,7 @@ class ProfileCreateForm(forms.ModelForm):
     
     def clean_username(self, *args, **kwargs):
         username = self.cleaned_data.get('username')
-        if not '4' in username:
+        if ' ' in username:
             raise forms.ValidationError("This is not a valid username")
         return username
 
