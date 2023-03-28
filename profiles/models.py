@@ -10,5 +10,5 @@ class Profile(models.Model):
     updated_at = models.DateTimeField(null=True, auto_now=True)
 
     def get_absolute_url(self):
-        return reverse("profile-detail", kwargs={"id": self.id})
+        return reverse("profiles:profile-detail", kwargs={"id": self.id})
 
