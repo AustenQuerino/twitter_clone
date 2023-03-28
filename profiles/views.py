@@ -71,8 +71,8 @@ class ProfileDetailView(DetailView):
     template_name = "profiles/profile_detail.html"
     queryset = Profile.objects.all()
 
-    # def get_object(self):
-    #     id_ = self.kwargs.get("id")
-    #     return get_object_or_404(Profile, id=id_)
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(Profile, id=id_)
 
 
