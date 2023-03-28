@@ -1,4 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import (
+    CreateView,
+    DetailView,
+    ListView,
+    UpdateView,
+    DeleteView,
+)
 
 from .forms import ProfileCreateForm
 from .models import Profile
@@ -53,4 +60,9 @@ def profile_delete_view(request, id):
         'object': obj
     }
     return render(request, "profiles/profile_delete.html", context)
+
+
+class ProfileListView(ListView):
+    template_name = "profiles/profile_list_link.html"
+    queryset = Profile.objects.all()
 
