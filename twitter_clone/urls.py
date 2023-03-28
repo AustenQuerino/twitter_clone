@@ -20,7 +20,7 @@ from pages.views import home_view, contact_view, about_view
 from profiles.views import (
     profile_create_view, 
     render_initial_data, 
-    dynamic_lookup_view, 
+    profile_detail_view, 
     profile_delete_view, 
     profile_list_view
     )
@@ -28,7 +28,7 @@ from profiles.views import (
 urlpatterns = [
     path('', home_view, name='home'),
     path('contact/', contact_view, name='contact'),
-    path('profile/<int:id>/', dynamic_lookup_view, name='profile-detail'),
+    path('profile/<int:id>/', profile_detail_view, name='profile-detail'),
     path('profile/<int:id>/delete/', profile_delete_view, name='profile-delete'),
     path('profile/list/', profile_list_view, name='profile-list'),
     path('create/', profile_create_view, name='profile-create'),
