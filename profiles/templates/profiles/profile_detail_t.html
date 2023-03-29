@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y" class="rounded-circle" alt="Profile Picture">
+      </div>
+      <div class="col-sm-9">
+        <h1>{{ profile.username }}</h1>
+        <p class="lead">{{ profile.name }}</p>
+        <p>{{ profile.bio }}</p>
+        <p>Joined: {{ profile.created_at|date:"F j, Y" }}</p>
+        <p>Last updated: {{ profile.updated_at|date:"F j, Y" }}</p>
+      </div>
+    </div>
+  </div>

@@ -68,7 +68,7 @@ class ProfileListView(ListView):
 
 
 class ProfileDetailView(DetailView):
-    template_name = "profiles/profile_detail.html"
+    template_name = "profiles/profile_detail_t.html"
     queryset = Profile.objects.all()
 
     def get_object(self):
