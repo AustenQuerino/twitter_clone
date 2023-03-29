@@ -75,4 +75,12 @@ class ProfileDetailView(DetailView):
         id_ = self.kwargs.get("id")
         return get_object_or_404(Profile, id=id_)
 
+class ProfileCreateView(CreateView):
+    template_name = "profiles/profile_create.html"
+    form_class = ProfileCreateForm
+    queryset = Profile.objects.all()
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
 
