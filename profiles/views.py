@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView,
     DetailView,
@@ -79,6 +80,7 @@ class ProfileDetailView(DetailView):
 class ProfileCreateView(CreateView):
     template_name = "profiles/profile_create_t.html"
     form_class = ProfileCreateForm
+    success_url = reverse_lazy("profiles:profile-list")
     queryset = Profile.objects.all()
 
     def form_valid(self, form):
