@@ -77,7 +77,7 @@ class ProfileDetailView(DetailView):
 
 
 class ProfileCreateView(CreateView):
-    template_name = "profiles/profile_create.html"
+    template_name = "profiles/profile_create_t.html"
     form_class = ProfileCreateForm
     queryset = Profile.objects.all()
 
@@ -87,7 +87,7 @@ class ProfileCreateView(CreateView):
 
 
 class ProfileUpdateView(UpdateView):
-    template_name = "profiles/profile_create.html"
+    template_name = "profiles/profile_create_t.html"
     form_class = ProfileCreateForm
     queryset = Profile.objects.all()
 
